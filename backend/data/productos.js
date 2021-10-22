@@ -1,4 +1,4 @@
-const products = [
+const productos = [
   {
     _id: "1",
     name: "Nemeziz 19.4",
@@ -10,7 +10,7 @@ const products = [
     price: 89.99,
     countInStock: 10,
     rating: 4.5,
-    numReviews: 12,
+    numReviews: 14,
   },
   {
     _id: "2",
@@ -22,7 +22,7 @@ const products = [
     price: 89.99,
     countInStock: 10,
     rating: 4.5,
-    numReviews: 12,
+    numReviews: 15,
   },
   {
     _id: "3",
@@ -34,8 +34,8 @@ const products = [
     category: "Zapatos",
     price: 89.99,
     countInStock: 10,
-    rating: 4.5,
-    numReviews: 12,
+    rating: 5,
+    numReviews: 23,
   },
   {
     _id: "4",
@@ -47,8 +47,8 @@ const products = [
     category: "Zapatos",
     price: 89.99,
     countInStock: 10,
-    rating: 4.5,
-    numReviews: 12,
+    rating: 3,
+    numReviews: 15,
   },
   {
     _id: "5",
@@ -60,7 +60,7 @@ const products = [
     category: "Zapatos",
     price: 89.99,
     countInStock: 10,
-    rating: 4.5,
+    rating: 4,
     numReviews: 12,
   },
   {
@@ -73,8 +73,8 @@ const products = [
     price: 89.99,
     countInStock: 10,
     rating: 4.5,
-    numReviews: 12,
+    numReviews: 24,
   },
 ];
 
-export default products;
+module.exports = productos;

@@ -23,7 +23,7 @@ function VistaProducto({ match }) {
     };
 
     fetchProducto();
-  }, []);
+  }, [match]);
 
   return (
     <>

@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "Ecommerce MERN Stack",
   "main": "server.js",
+  "type": "module",
   "dependencies": {
     "accepts": "^1.3.7",
     "array-flatten": "^1.1.1",
     "axios": "^0.23.0",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "bytes": "^3.1.0",
     "content-disposition": "^0.5.3",
@@ -16,11 +18,13 @@
     "debug": "^2.6.9",
     "depd": "^1.1.2",
     "destroy": "^1.0.4",
+    "dotenv": "^10.0.0",
     "ee-first": "^1.1.1",
     "encodeurl": "^1.0.2",
     "escape-html": "^1.0.3",
     "etag": "^1.8.1",
     "express": "^4.17.1",
+    "express-async-handler": "^1.2.0",
     "finalhandler": "^1.1.2",
     "forwarded": "^0.2.0",
     "fresh": "^0.5.2",
@@ -34,6 +38,7 @@
     "mime": "^1.6.0",
     "mime-db": "^1.50.0",
     "mime-types": "^2.1.33",
+    "mongoose": "^6.0.12",
     "ms": "^2.0.0",
     "negotiator": "^0.6.2",
     "on-finished": "^2.3.0",
@@ -56,7 +61,12 @@
     "vary": "^1.1.2"
   },
   "scripts": {
-    "start": "node backend/server"
+    "start": "node backend/server",
+    "server": "nodemon backend/server",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "importar:datos": "node backend/seeder",
+    "eliminar:datos": "node backend/seeder -d"
   },
   "repository": {
     "type": "git",
@@ -67,5 +77,9 @@
   "bugs": {
     "url": "https://github.com/jimjabid/Tienda_REACT/issues"
   },
-  "homepage": "https://github.com/jimjabid/Tienda_REACT#readme"
+  "homepage": "https://github.com/jimjabid/Tienda_REACT#readme",
+  "devDependencies": {
+    "concurrently": "^6.3.0",
+    "nodemon": "^2.0.14"
+  }
 }

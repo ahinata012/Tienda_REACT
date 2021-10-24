@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import VistaProductoHome from "./vistas/VistaProductoHome";
 import VistaProducto from "./vistas/VistaProducto";
+import VistaCarrito from "./vistas/VistaCarrito.js";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Container>
           <Route path="/" component={VistaProductoHome} exact />
           <Route path="/producto/:id" component={VistaProducto} />
+          <Route path="/carrito/:id?" component={VistaCarrito} />
         </Container>
       </main>
       <Footer />

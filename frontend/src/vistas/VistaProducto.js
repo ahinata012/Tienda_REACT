@@ -17,7 +17,7 @@ import Cargando from "../components/Cargando";
 import { listarDetallesProducto } from "../actions/accionesProducto";
 
 function VistaProducto({ history, match }) {
-  const [cant, setCant] = useState(0);
+  const [cant, setCant] = useState(1);
 
   const dispatch = useDispatch();
 

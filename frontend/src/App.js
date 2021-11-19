@@ -5,7 +5,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import VistaProductoHome from "./vistas/VistaProductoHome";
 import VistaProducto from "./vistas/VistaProducto";
-import VistaCarrito from "./vistas/VistaCarrito.js";
+import VistaCarrito from "./vistas/VistaCarrito";
 
 const App = () => {
   return (

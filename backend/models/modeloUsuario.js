@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+import bcrypt from "bcryptjs";
 const usuarioSchema = mongoose.Schema(
   {
     nombre: {
@@ -25,6 +25,15 @@ const usuarioSchema = mongoose.Schema(
     timestamps: true,
   }
 );
+
+//Este metodo que definimos abajo es para comparar la contraseña ingresada (encriptada) con la contraseña que tenemos registrada
+// para el usuario tmbien encriptada
+
+usuarioSchema.methods.compararContrasena = async function (
+  contrasenaIngresada
+) {
+  return await bcrypt.compare(contrasenaIngresada, this.contrasena);
+};
 
 const Usuario = mongoose.model("Usuario", usuarioSchema);
 

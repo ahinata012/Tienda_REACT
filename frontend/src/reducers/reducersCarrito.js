@@ -1,4 +1,7 @@
-import { AGREGAR_ARTICULO_CARRITO } from "../constantes/constantesCarrito";
+import {
+  AGREGAR_ARTICULO_CARRITO,
+  QUITAR_ARTICULO_CARRITO,
+} from "../constantes/constantesCarrito";
 
 export const reducerCarrito = (state = { articulosCarrito: [] }, action) => {
   switch (action.type) {
@@ -22,6 +25,13 @@ export const reducerCarrito = (state = { articulosCarrito: [] }, action) => {
           articulosCarrito: [...state.articulosCarrito, articulo],
         };
       }
+    case QUITAR_ARTICULO_CARRITO:
+      return {
+        ...state,
+        articulosCarrito: state.articulosCarrito.filter(
+          (x) => x.producto !== action.payload
+        ),
+      };
     default:
       return state;
   }

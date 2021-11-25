@@ -13,7 +13,10 @@ import {
 } from "react-bootstrap";
 import Mensaje from "../components/Mensaje";
 import Cargando from "../components/Cargando";
-import { agregarAlCarrito } from "../actions/accionesCarrito.js";
+import {
+  agregarAlCarrito,
+  removerDelCarrito,
+} from "../actions/accionesCarrito.js";
 
 const VistaCarrito = ({ match, location, history }) => {
   const idProducto = match.params.id;
@@ -34,8 +37,8 @@ const VistaCarrito = ({ match, location, history }) => {
     }
   }, [dispatch, idProducto, cant]);
 
-  const removerDelCarrito = (id) => {
-    console.log("remove");
+  const removerDelCarritoHandler = (id) => {
+    dispatch(removerDelCarrito(id));
   };
 
   const pagarArticulo = () => {
@@ -95,7 +98,9 @@ const VistaCarrito = ({ match, location, history }) => {
                     <Button
                       type="button"
                       variant="light"
-                      onClick={() => removerDelCarrito(articulo.producto)}
+                      onClick={() =>
+                        removerDelCarritoHandler(articulo.producto)
+                      }
                     >
                       <i className="fas fa-trash"></i>
                     </Button>

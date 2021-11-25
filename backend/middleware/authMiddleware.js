@@ -15,8 +15,13 @@ const protejer = AsyncHandler(async (req, res, next) => {
     try {
       token = req.headers.authorization.split(" ")[1];
       const decoded = jwt.verify(token, process.env.JWT_TOKEN_SECRETO); //ESTO ES PARA RECIBIR OBJETO QUE SE RETORNA CON EL TOKEN DECODIFICADO CON EL ID DEL USUARIO
-      req.usuario = await Usuario.finById(decoded.id).select("-contrasena");
-    } catch (error) {}
+      req.usuario = await Usuario.findById(decoded.id).select("-contrasena");
+      next();
+    } catch (error) {
+      console.error(error);
+      res.status(401);
+      throw new Error("No Autorizado, el token ha falllado");
+    }
   }
 
   if (!token) {

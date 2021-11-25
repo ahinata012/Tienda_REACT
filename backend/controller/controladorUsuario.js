@@ -11,7 +11,7 @@ const authUser = asyncHandler(async (req, res) => {
   // con la info del usuario.email y contrasena
   const { email, contrasena } = req.body;
 
-  //con esto queremos encoontrar un email que esté dentro de nuestro modelo de datos de usuario
+  //con esto queremos encontrar un email que esté dentro de nuestro modelo de datos de usuario
   //que sea igual al email que pasamos como parametro arriba
   const usuario = await Usuario.findOne({ email: email });
 
@@ -36,7 +36,19 @@ const authUser = asyncHandler(async (req, res) => {
 //@acceso       esta es una ruta PRIVADA
 
 const getPerfilUsuario = asyncHandler(async (req, res) => {
-  res.send("Exitos");
+  const usuario = await Usuario.findById(req.usuario._id);
+
+  if (usuario) {
+    res.json({
+      _id: usuario._id,
+      nombre: usuario.nombre,
+      email: usuario.email,
+      esAdmin: usuario.esAdmin,
+    });
+  } else {
+    res.status(404);
+    throw new Error("usuario no encontrado");
+  }
 });
 
 export { authUser, getPerfilUsuario };

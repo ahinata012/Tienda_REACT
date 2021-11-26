@@ -23,6 +23,9 @@ const Header = () => {
                   <i className="fas fa-user"> </i>Inicia Sesion
                 </Nav.Link>
               </LinkContainer>
+              <LinkContainer to="/quienesSomos">
+                <Nav.Link>¿Quienes Somos?</Nav.Link>
+              </LinkContainer>
             </Nav>
           </Navbar.Collapse>
         </Container>

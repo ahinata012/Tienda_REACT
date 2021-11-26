@@ -31,6 +31,38 @@ const authUser = asyncHandler(async (req, res) => {
   }
 });
 
+//@descripcion  Con esta Funcion vamos a Registrar un nuevo usuario
+//@route        POST/api/usuarios
+//@acceso       esta es una ruta publica
+
+const registrarUsuario = asyncHandler(async (req, res) => {
+  const { nombre, email, contrasena } = req.body;
+
+  const usuarioExiste = await Usuario.findOne({ email: email });
+
+  if (usuarioExiste) {
+    res.status(400);
+    throw new Error("El usuario ya existe");
+  }
+  const usuario = await Usuario.create({
+    nombre,
+    email,
+    contrasena,
+  });
+  if (usuario) {
+    res.status(201).json({
+      _id: usuario._id,
+      nombre: usuario.nombre,
+      email: usuario.email,
+      esAdmin: usuario.esAdmin,
+      token: generarToken(usuario._id),
+    });
+  } else {
+    res.status(400);
+    throw new Error("Datos del usuario incorrectos");
+  }
+});
+
 //@descripcion  Con esta Funcion vamos a recibir el perfil del usuario
 //@route        GET/api/usuarios/perfil
 //@acceso       esta es una ruta PRIVADA
@@ -51,4 +83,4 @@ const getPerfilUsuario = asyncHandler(async (req, res) => {
   }
 });
 
-export { authUser, getPerfilUsuario };
+export { authUser, getPerfilUsuario, registrarUsuario };

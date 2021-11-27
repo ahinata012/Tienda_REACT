@@ -7,17 +7,19 @@ import VistaProductoHome from "./vistas/VistaProductoHome";
 import VistaProducto from "./vistas/VistaProducto";
 import VistaCarrito from "./vistas/VistaCarrito";
 import VistaQuienesSomos from "./vistas/VistaQuienesSomos";
+import VistaLogin from "./vistas/VistaLogin";
 const App = () => {
   return (
     <Router>
       <Header />
       <main className="py-3">
         <Container>
-          <Route path="/" component={VistaProductoHome} exact />
+          <Route path="/login" component={VistaLogin} />
           <Route path="/producto/:id" component={VistaProducto} />
 
           <Route path="/carrito/:id?" component={VistaCarrito} />
           <Route path="/quienesSomos" component={VistaQuienesSomos} />
+          <Route path="/" component={VistaProductoHome} exact />
         </Container>
       </main>
       <Footer />

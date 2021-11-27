@@ -3,6 +3,7 @@ import {
   USER_LOGIN_FAIL,
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
+  USER_LOGOUT,
 } from "../constantes/constantesUsuario";
 
 export const login = (email, contrasena) => async (dispatch) => {
@@ -37,4 +38,9 @@ export const login = (email, contrasena) => async (dispatch) => {
           : error.message,
     });
   }
+};
+
+export const logout = () => (dispatch) => {
+  localStorage.removeItem("usuarioInfo");
+  dispatch({ type: USER_LOGOUT });
 };

@@ -9,26 +9,27 @@ import {
   Col,
   FormControl,
 } from "react-bootstrap";
-import { useDispatch, userSelector, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Mensaje from "../components/Mensaje";
 import Cargando from "../components/Cargando";
 import ContenedorFormulario from "../components/ContenedorFormulario";
 import { login } from "../actions/accionesUsuario";
-import { redirect } from "statuses";
 
 const VistaLogin = ({ location, history }) => {
   const [email, setEmail] = useState("");
   const [contrasena, setContrasena] = useState("");
 
   const dispatch = useDispatch();
+
   const usuarioLogin = useSelector((state) => state.usuarioLogin);
+
   const { loading, error, usuarioInfo } = usuarioLogin;
 
   const redirect = location.search ? location.search.split("=")[1] : "/";
 
   useEffect(() => {
     if (usuarioInfo) {
-      history.pushState(redirect);
+      history.push(redirect);
     }
   }, [history, usuarioInfo, redirect]);
 

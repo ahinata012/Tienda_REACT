@@ -12,6 +12,7 @@ import VistaRegistro from "./vistas/VistaRegistro";
 import VistaPerfil from "./vistas/VistaPerfil";
 import VistaEnvio from "./vistas/VistaEnvio";
 import VistaPagos from "./vistas/VistaPagos";
+import VistaOrdenes from "./vistas/VistaOrdenes";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Container>
           <Route path="/envio" component={VistaEnvio} />
           <Route path="/pago" component={VistaPagos} />
+          <Route path="/ordenar" component={VistaOrdenes} />
           <Route path="/login" component={VistaLogin} />
           <Route path="/registro" component={VistaRegistro} />
           <Route path="/perfil" component={VistaPerfil} />

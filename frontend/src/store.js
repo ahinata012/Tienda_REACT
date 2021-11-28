@@ -31,8 +31,15 @@ const usuarioInfoDeLocalStorage = localStorage.getItem("usuarioInfo")
   ? JSON.parse(localStorage.getItem("usuarioInfo"))
   : null;
 
+const direccionDeEnvioDeLocalStorage = localStorage.getItem("direccionDeEnvio")
+  ? JSON.parse(localStorage.getItem("direccionDeEnvio"))
+  : {};
+
 const initialState = {
-  carrito: { articulosCarrito: articulosCarritoDeLocalStorage },
+  carrito: {
+    articulosCarrito: articulosCarritoDeLocalStorage,
+    direccionDeEnvio: direccionDeEnvioDeLocalStorage,
+  },
   usuarioLogin: { usuarioInfo: usuarioInfoDeLocalStorage },
 };
 

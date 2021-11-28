@@ -42,7 +42,7 @@ const VistaCarrito = ({ match, location, history }) => {
   };
 
   const pagarArticulo = () => {
-    history.push("/login?redirect=shipping");
+    history.push("/login?redirect=envio");
   };
 
   return (

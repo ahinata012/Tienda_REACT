@@ -1,6 +1,7 @@
 import axios from "axios";
 import {
   AGREGAR_ARTICULO_CARRITO,
+  CARRITO_GUARDAR_DIRECCION_ENVIO,
   QUITAR_ARTICULO_CARRITO,
 } from "../constantes/constantesCarrito";
 
@@ -35,4 +36,13 @@ export const removerDelCarrito = (id) => (dispatch, getState) => {
     "articulosCarrito",
     JSON.stringify(getState().carrito.articulosCarrito)
   );
+};
+
+export const guardarDireccionDeEnvio = (data) => (dispatch) => {
+  dispatch({
+    type: CARRITO_GUARDAR_DIRECCION_ENVIO,
+    payload: data,
+  });
+
+  localStorage.setItem("direccionDeEnvio", JSON.stringify(data));
 };

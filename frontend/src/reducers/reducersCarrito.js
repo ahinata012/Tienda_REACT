@@ -1,9 +1,13 @@
 import {
   AGREGAR_ARTICULO_CARRITO,
   QUITAR_ARTICULO_CARRITO,
+  CARRITO_GUARDAR_DIRECCION_ENVIO,
 } from "../constantes/constantesCarrito";
 
-export const reducerCarrito = (state = { articulosCarrito: [] }, action) => {
+export const reducerCarrito = (
+  state = { articulosCarrito: [], direccionDeEnvio: {} },
+  action
+) => {
   switch (action.type) {
     case AGREGAR_ARTICULO_CARRITO:
       const articulo = action.payload;
@@ -31,6 +35,11 @@ export const reducerCarrito = (state = { articulosCarrito: [] }, action) => {
         articulosCarrito: state.articulosCarrito.filter(
           (x) => x.producto !== action.payload
         ),
+      };
+    case CARRITO_GUARDAR_DIRECCION_ENVIO:
+      return {
+        ...state,
+        direccionDeEnvio: action.payload,
       };
     default:
       return state;

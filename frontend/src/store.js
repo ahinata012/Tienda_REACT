@@ -10,6 +10,7 @@ import {
   reducerUsuarioLogin,
   reducerUsuarioRegistro,
   reducerUsuarioDetalles,
+  reducerUsuarioActualizarPerfil,
 } from "./reducers/reducersUsuario";
 
 const reducer = combineReducers({
@@ -19,6 +20,7 @@ const reducer = combineReducers({
   usuarioLogin: reducerUsuarioLogin,
   usuarioRegistro: reducerUsuarioRegistro,
   usuarioDetalles: reducerUsuarioDetalles,
+  usuarioActualizarPerfil: reducerUsuarioActualizarPerfil,
 });
 
 const articulosCarritoDeLocalStorage = localStorage.getItem("articulosCarrito")

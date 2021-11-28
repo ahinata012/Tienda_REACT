@@ -13,7 +13,10 @@ import { useDispatch, useSelector } from "react-redux";
 import Mensaje from "../components/Mensaje";
 import Cargando from "../components/Cargando";
 
-import { getUsuarioDetalles } from "../actions/accionesUsuario";
+import {
+  getUsuarioDetalles,
+  actualizarPerfilUsuario,
+} from "../actions/accionesUsuario";
 
 const VistaPerfil = ({ location, history }) => {
   const [nombre, setNombre] = useState("");
@@ -25,12 +28,15 @@ const VistaPerfil = ({ location, history }) => {
   const dispatch = useDispatch();
 
   const usuarioDetalles = useSelector((state) => state.usuarioDetalles);
-
   const { loading, error, usuario } = usuarioDetalles;
 
   const usuarioLogin = useSelector((state) => state.usuarioLogin);
-
   const { usuarioInfo } = usuarioLogin;
+
+  const usuarioActualizarPerfil = useSelector(
+    (state) => state.usuarioActualizarPerfil
+  );
+  const { success } = usuarioActualizarPerfil;
 
   useEffect(() => {
     if (!usuarioInfo) {
@@ -47,11 +53,17 @@ const VistaPerfil = ({ location, history }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-
     if (contrasena !== confirmarContrasena) {
       setMensaje("Las contraseñas no coincide");
     } else {
-      // AQUI VAMOS A ENVIAR EL PERFIL ACTUALIZADO
+      dispatch(
+        actualizarPerfilUsuario({
+          id: usuario._id,
+          nombre,
+          email,
+          contrasena,
+        })
+      );
     }
   };
 
@@ -60,6 +72,8 @@ const VistaPerfil = ({ location, history }) => {
       <Col md={3}>
         <h2>Tu perfil</h2>
         {mensaje && <Mensaje variant="danger">{mensaje}</Mensaje>}
+        {error && <Mensaje variant="danger">{error}</Mensaje>}
+        {success && <Mensaje variant="success">Tu Perfil Se Actualizó</Mensaje>}
         {loading && <Cargando />}
         <Form onSubmit={submitHandler}>
           <FormGroup controlId="nombre">

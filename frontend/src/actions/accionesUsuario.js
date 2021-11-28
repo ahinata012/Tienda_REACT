@@ -10,6 +10,9 @@ import {
   USER_REGISTER_FAIL,
   USER_REGISTER_REQUEST,
   USER_REGISTER_SUCCESS,
+  USER_UPDATE_FAIL,
+  USER_UPDATE_REQUEST,
+  USER_UPDATE_SUCCESS,
 } from "../constantes/constantesUsuario";
 
 export const login = (email, contrasena) => async (dispatch) => {
@@ -122,3 +125,37 @@ export const getUsuarioDetalles = (id) => async (dispatch, getState) => {
     });
   }
 };
+
+export const actualizarPerfilUsuario =
+  (usuario) => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: USER_UPDATE_REQUEST,
+      });
+
+      const {
+        usuarioLogin: { usuarioInfo },
+      } = getState();
+      const config = {
+        headers: {
+          "content-type": "application/json",
+          Authorization: `Bearer ${usuarioInfo.token}`,
+        },
+      };
+
+      const { data } = await axios.put(`/api/usuarios/perfil`, usuario, config);
+
+      dispatch({
+        type: USER_UPDATE_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: USER_UPDATE_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };

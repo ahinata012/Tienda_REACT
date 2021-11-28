@@ -51,6 +51,7 @@ const VistaRegistro = ({ location, history }) => {
     <ContenedorFormulario>
       <h1>Registrate</h1>
       {mensaje && <Mensaje variant="danger">{mensaje}</Mensaje>}
+      {error && <Mensaje variant="danger">{error}</Mensaje>}
       {loading && <Cargando />}
       <Form onSubmit={submitHandler}>
         <FormGroup controlId="nombre">

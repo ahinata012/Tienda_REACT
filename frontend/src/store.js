@@ -6,13 +6,19 @@ import {
   reducerDetallesProducto,
 } from "./reducers/reducersProducto.js";
 import { reducerCarrito } from "./reducers/reducersCarrito";
-import { reducerUsuarioLogin } from "./reducers/reducersUsuario";
+import {
+  reducerUsuarioLogin,
+  reducerUsuarioRegistro,
+  reducerUsuarioDetalles,
+} from "./reducers/reducersUsuario";
 
 const reducer = combineReducers({
   listarProducto: reducerListaProducto,
   detallesProducto: reducerDetallesProducto,
   carrito: reducerCarrito,
   usuarioLogin: reducerUsuarioLogin,
+  usuarioRegistro: reducerUsuarioRegistro,
+  usuarioDetalles: reducerUsuarioDetalles,
 });
 
 const articulosCarritoDeLocalStorage = localStorage.getItem("articulosCarrito")

@@ -8,6 +8,8 @@ import VistaProducto from "./vistas/VistaProducto";
 import VistaCarrito from "./vistas/VistaCarrito";
 import VistaQuienesSomos from "./vistas/VistaQuienesSomos";
 import VistaLogin from "./vistas/VistaLogin";
+import VistaRegistro from "./vistas/VistaRegistro";
+import VistaPerfil from "./vistas/VistaPerfil";
 const App = () => {
   return (
     <Router>
@@ -15,6 +17,8 @@ const App = () => {
       <main className="py-3">
         <Container>
           <Route path="/login" component={VistaLogin} />
+          <Route path="/registro" component={VistaRegistro} />
+          <Route path="/perfil" component={VistaPerfil} />
           <Route path="/producto/:id" component={VistaProducto} />
 
           <Route path="/carrito/:id?" component={VistaCarrito} />

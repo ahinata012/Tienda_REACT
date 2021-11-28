@@ -63,7 +63,7 @@ const registrarUsuario = asyncHandler(async (req, res) => {
   }
 });
 
-//@descripcion  Con esta Funcion vamos a recibir el perfil del usuario
+//@descripcion  Con esta Funcion vamos a recibir la informacion del perfil del usuario
 //@route        GET/api/usuarios/perfil
 //@acceso       esta es una ruta PRIVADA
 
@@ -83,4 +83,32 @@ const getPerfilUsuario = asyncHandler(async (req, res) => {
   }
 });
 
-export { authUser, getPerfilUsuario, registrarUsuario };
+//@descripcion  Con esta Funcion vamos a actualizar el perfil del usuario
+//@route        PUT/api/usuarios/perfil
+//@acceso       esta es una ruta PRIVADA
+
+const updatePerfilUsuario = asyncHandler(async (req, res) => {
+  const usuario = await Usuario.findById(req.usuario._id);
+
+  if (usuario) {
+    usuario.nombre = req.body.nombre || usuario.nombre;
+    usuario.email = req.body.email || usuario.email;
+    if (req.body.contrasena) {
+      usuario.contrasena = req.body.contrasena;
+    }
+    const usuarioActualizado = await usuario.save();
+
+    res.json({
+      _id: usuarioActualizado._id,
+      nombre: usuarioActualizado.nombre,
+      email: usuarioActualizado.email,
+      esAdmin: usuarioActualizado.esAdmin,
+      token: generarToken(usuarioActualizado._id), //devuelve el token con el ID de usuario actualizado como payload
+    });
+  } else {
+    res.status(404);
+    throw new Error("usuario no encontrado");
+  }
+});
+
+export { authUser, getPerfilUsuario, registrarUsuario, updatePerfilUsuario };

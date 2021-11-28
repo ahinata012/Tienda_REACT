@@ -17,3 +17,14 @@ h2 {
 .rating span {
   margin: 0.2rem;
 }
+
+.link__footer .fab {
+  font-size: 2rem;
+  margin: 0 0.5rem;
+  color: #fff;
+}
+
+footer {
+  background-color: #343a40;
+  color: #fff;
+}

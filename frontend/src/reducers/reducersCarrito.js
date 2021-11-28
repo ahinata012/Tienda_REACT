@@ -2,6 +2,7 @@ import {
   AGREGAR_ARTICULO_CARRITO,
   QUITAR_ARTICULO_CARRITO,
   CARRITO_GUARDAR_DIRECCION_ENVIO,
+  CARRITO_GUARDAR_METODO_PAGO,
 } from "../constantes/constantesCarrito";
 
 export const reducerCarrito = (
@@ -40,6 +41,11 @@ export const reducerCarrito = (
       return {
         ...state,
         direccionDeEnvio: action.payload,
+      };
+    case CARRITO_GUARDAR_METODO_PAGO:
+      return {
+        ...state,
+        metodoDePago: action.payload,
       };
     default:
       return state;

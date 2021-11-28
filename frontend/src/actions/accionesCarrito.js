@@ -3,6 +3,7 @@ import {
   AGREGAR_ARTICULO_CARRITO,
   CARRITO_GUARDAR_DIRECCION_ENVIO,
   QUITAR_ARTICULO_CARRITO,
+  CARRITO_GUARDAR_METODO_PAGO,
 } from "../constantes/constantesCarrito";
 
 export const agregarAlCarrito = (id, cant) => async (dispatch, getState) => {
@@ -45,4 +46,13 @@ export const guardarDireccionDeEnvio = (data) => (dispatch) => {
   });
 
   localStorage.setItem("direccionDeEnvio", JSON.stringify(data));
+};
+
+export const guardarMetodoDePago = (data) => (dispatch) => {
+  dispatch({
+    type: CARRITO_GUARDAR_METODO_PAGO,
+    payload: data,
+  });
+
+  localStorage.setItem("metodoDePago", JSON.stringify(data));
 };

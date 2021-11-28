@@ -9,6 +9,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 
 import ContenedorFormulario from "../components/ContenedorFormulario";
+import BarraProgreso from "../components/BarraProgreso";
 import { guardarDireccionDeEnvio } from "../actions/accionesCarrito";
 
 const VistaEnvio = ({ history }) => {
@@ -35,6 +36,7 @@ const VistaEnvio = ({ history }) => {
 
   return (
     <ContenedorFormulario>
+      <BarraProgreso paso1 paso2 />
       <h1>Envio</h1>
       <Form onSubmit={submitHandler}>
         <FormGroup controlId="direccion">

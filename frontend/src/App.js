@@ -11,6 +11,8 @@ import VistaLogin from "./vistas/VistaLogin";
 import VistaRegistro from "./vistas/VistaRegistro";
 import VistaPerfil from "./vistas/VistaPerfil";
 import VistaEnvio from "./vistas/VistaEnvio";
+import VistaPagos from "./vistas/VistaPagos";
+
 const App = () => {
   return (
     <Router>
@@ -18,6 +20,7 @@ const App = () => {
       <main className="py-3">
         <Container>
           <Route path="/envio" component={VistaEnvio} />
+          <Route path="/pago" component={VistaPagos} />
           <Route path="/login" component={VistaLogin} />
           <Route path="/registro" component={VistaRegistro} />
           <Route path="/perfil" component={VistaPerfil} />

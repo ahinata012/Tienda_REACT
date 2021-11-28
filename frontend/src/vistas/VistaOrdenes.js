@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button, Row, Col, ListGroup, Image, Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Mensaje from "../components/Mensaje";
 import BarraProgreso from "../components/BarraProgreso";
+import { ordenCrear } from "../actions/accionesOrdenes";
 
-const VistaOrdenes = () => {
+const VistaOrdenes = ({ history }) => {
+  const dispatch = useDispatch();
+
   const carrito = useSelector((state) => state.carrito);
   //calcular los precios
   const agregarDecimales = (num) => {
@@ -32,8 +35,28 @@ const VistaOrdenes = () => {
     Number(carrito.precioIva)
   ).toFixed(2);
 
+  const crearOrden = useSelector((state) => state.crearOrden);
+  const { orden, success, error } = crearOrden;
+
+  useEffect(() => {
+    if (success) {
+      history.push(`/ordenar/${orden._id}`);
+    }
+    // eslint-disable-next-line
+  }, [history, success]);
+
   const ordenarHandler = () => {
-    console.log("order");
+    dispatch(
+      ordenCrear({
+        itemsOrdenados: carrito.articulosCarrito,
+        direccionDeEnvio: carrito.direccionDeEnvio,
+        metodoDePago: carrito.metodoDePago,
+        precioArticulos: carrito.precioArticulos,
+        precioEnvio: carrito.precioEnvio,
+        precioIva: carrito.precioIva,
+        precioTotal: carrito.precioTotal,
+      })
+    );
   };
 
   return (
@@ -124,6 +147,9 @@ const VistaOrdenes = () => {
                 </Row>
               </ListGroup.Item>
 
+              <ListGroup.Item>
+                {error && <Mensaje variant="danger"> {error} </Mensaje>}
+              </ListGroup.Item>
               <ListGroup.Item>
                 <Button
                   type="button"

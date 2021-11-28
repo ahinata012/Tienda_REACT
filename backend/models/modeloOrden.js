@@ -10,7 +10,7 @@ const ordenSchema = mongoose.Schema(
     itemsOrdenados: [
       {
         name: { type: String, required: true },
-        cantidad: { type: Number, required: true },
+        cantidad: { type: Number, required: false },
         image: { type: String, required: true },
         price: { type: Number, required: true },
         producto: {
@@ -27,7 +27,7 @@ const ordenSchema = mongoose.Schema(
       pais: { type: String, required: true },
     },
     metodoDePago: {
-      type: Boolean,
+      type: String,
       required: true,
     },
     resultadoDelPago: {

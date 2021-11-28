@@ -7,6 +7,7 @@ import {
 import connectarDB from "./config/db.js";
 import rutasProductos from "./routes/rutasProducto.js";
 import rutasUsuario from "./routes/rutasUsuario.js";
+import rutasOrdenes from "./routes/rutasOrdenes.js";
 
 dotenv.config();
 
@@ -23,6 +24,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/productos", rutasProductos);
 app.use("/api/usuarios", rutasUsuario);
+app.use("/api/ordenes", rutasOrdenes);
 
 app.use(noEncontrado);
 

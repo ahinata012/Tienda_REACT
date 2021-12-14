@@ -1,0 +1,6 @@
+hola puedes ayudarme 
+estoy aprendiendo y me sale un error al utilizar el codigo de tienda
+[0] servidor corriendo en modo ${process.env.NODE_ENV} en el puerto ${PORT}
+[0] Erro: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string
+
+si me pues ayudar gracias
